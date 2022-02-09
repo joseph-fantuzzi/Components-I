@@ -1,14 +1,7 @@
-import './Menu.less'
+import "./Menu.less";
 
 // This is the data we will be using, study it but don't change anything, yet.
-let menuItems = [
-  'Students',
-  'Faculty',
-  "What's New",
-  'Tech Trends',
-  'Music',
-  'Log Out'
-];
+let menuItems = ["Students", "Faculty", "What's New", "Tech Trends", "Music", "Log Out"];
 
 /*
   Step 1: Write a component called 'menuMaker' to create a menu like the markup below:
@@ -32,3 +25,26 @@ let menuItems = [
 
   Step 6: Use 'menuMaker' to create a menu using the 'menuItems' array, and append the returned menu to the header.
 */
+
+function menuMaker(menuArray) {
+  const menuDiv = document.createElement("div");
+  const unorderedList = document.createElement("ul");
+
+  menuDiv.appendChild(unorderedList);
+
+  menuDiv.classList.add("menu");
+
+  menuArray.forEach((item) => {
+    let listItem = document.createElement("li");
+    listItem.textContent = item;
+    unorderedList.appendChild(listItem);
+  });
+
+  const menuButton = document.querySelector(".menu-button");
+
+  menuButton.addEventListener("click", () => {
+    menuDiv.classList.toggle(".menu--open");
+  });
+
+  return menuDiv;
+}
